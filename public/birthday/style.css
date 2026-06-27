@@ -299,3 +299,132 @@ em{font-style:normal;background:var(--yellow);padding:0 .25em;border:3px solid v
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none !important;transition:none !important}
 }
+
+/* =========================================================
+   RESPONSIVE HARDENING — mobile-first, zero overflow
+   ========================================================= */
+html{ -webkit-text-size-adjust:100%; text-size-adjust:100% }
+html,body{ overflow-x:clip; max-width:100% }
+*,*::before,*::after{ min-width:0; box-sizing:border-box }
+img,svg,video,canvas{ max-width:100%; height:auto; display:block }
+p,h1,h2,h3,h4,h5,h6,span,a,li,button{ overflow-wrap:break-word; word-break:break-word; hyphens:auto }
+section,header,footer,main,div{ max-width:100% }
+
+/* Fluid section padding (mobile-first) */
+.section{ padding: clamp(48px, 10vw, 120px) clamp(16px, 5vw, 48px) }
+.section-head{ padding-inline: 0 }
+
+/* Nav: prevent overflow / wrapping issues */
+.nav{ padding: clamp(10px,2vw,16px) clamp(12px,3vw,32px); gap: clamp(8px,2vw,16px); flex-wrap:wrap }
+.nav-logo{ font-size: clamp(18px, 4.5vw, 28px); padding: 4px 10px }
+.nav-links a{ font-size: clamp(12px, 1.6vw, 14px); padding: 6px 10px }
+.theme-toggle,.menu-btn{ width: clamp(38px,8vw,44px); height: clamp(38px,8vw,44px); font-size: clamp(14px,2vw,18px) }
+
+/* HERO fluid scaling for tiny screens */
+.hero{ padding: clamp(48px,10vw,100px) clamp(14px,4vw,40px); min-height: clamp(70vh, 90vh, 100vh) }
+.hero-title .line{ font-size: clamp(48px, 14vw, 220px); line-height:.88 }
+.hero-title .line.heart{ font-size: clamp(44px, 11vw, 140px) }
+.hero-sub{ font-size: clamp(15px, 2.4vw, 26px); padding-inline: 8px }
+.hero-cta{ gap: clamp(10px,2vw,16px) }
+.btn{ min-height:44px; padding: clamp(10px,2.2vw,16px) clamp(14px,3vw,24px); font-size: clamp(14px,2vw,20px) }
+.btn.huge{ font-size: clamp(18px,3.5vw,32px); padding: clamp(16px,3vw,22px) clamp(20px,4vw,36px) }
+.hero-meta{ gap: clamp(8px,2vw,14px) }
+.meta-card{ flex:1 1 140px; min-width:0; padding: clamp(10px,2vw,16px) clamp(12px,2vw,20px) }
+.meta-card strong{ font-size: clamp(24px,5vw,38px) }
+.meta-card span{ font-size: clamp(10px,1.4vw,12px) }
+
+/* Hide custom cursor on touch / narrow */
+@media (max-width: 900px), (hover:none){
+  .cursor,.cursor-dot{ display:none !important }
+  body,button,a{ cursor:auto }
+}
+
+/* Hide decorative doodles on very small screens so they never overflow */
+@media (max-width: 520px){
+  .doodle{ display:none }
+  .hero-bg{ display:none }
+}
+
+/* Section titles fluid */
+.section-title{ font-size: clamp(34px, 8vw, 96px); line-height:.95 }
+.section-sub{ font-size: clamp(14px,1.8vw,18px) }
+
+/* Marquee — keep within viewport */
+.marquee{ padding: clamp(10px,2vw,16px) 0; max-width:100vw; overflow:hidden }
+.marquee-track{ font-size: clamp(16px,3.5vw,32px); gap: clamp(20px,4vw,40px) }
+
+/* Polaroid grid */
+.polaroid-grid{ grid-template-columns: repeat(auto-fit, minmax(min(220px,100%), 1fr)); gap: clamp(18px,3vw,30px) }
+
+/* Reasons cards */
+.reasons-grid{ grid-template-columns: repeat(auto-fit, minmax(min(240px,100%), 1fr)); gap: clamp(16px,2.5vw,24px) }
+@media (hover:none){
+  .reason{ height:auto; min-height:220px }
+  .reason:hover{ transform:none }
+  .reason .back{ transform: rotateY(0); position:relative; margin-top:14px }
+  .reason{ transform-style:flat }
+  .reason .face{ position:relative; inset:auto; backface-visibility:visible }
+}
+
+/* Timeline */
+.timeline-list{ padding-inline: clamp(8px,2vw,16px) }
+.tl-card{ padding: clamp(14px,2.2vw,20px) }
+.tl-title{ font-size: clamp(20px,3vw,26px) }
+
+/* Meter / quiz / letter / scratch boxes — fluid padding */
+.meter-box,.quiz-box,.paper,.player,.counter-box{ padding: clamp(18px,3.5vw,32px) }
+.meter-readout span{ font-size: clamp(32px,6vw,48px) }
+.q-question{ font-size: clamp(20px,3.5vw,36px) }
+
+/* Bubble + gift grids */
+.bubble-grid,.gift-grid{ grid-template-columns: repeat(auto-fit, minmax(min(220px,100%), 1fr)); gap: clamp(16px,2.5vw,24px) }
+.gift{ padding: clamp(18px,3vw,28px) }
+.gift-box{ font-size: clamp(56px,12vw,90px) }
+
+/* Player — collapse to one column under 640px */
+.player{ grid-template-columns: clamp(140px,22vw,200px) 1fr; gap: clamp(16px,3vw,28px) }
+@media (max-width:640px){
+  .player{ grid-template-columns: 1fr; text-align:center }
+  .player-art{ justify-self:center }
+}
+.vinyl{ width: clamp(120px,28vw,170px); height: clamp(120px,28vw,170px); font-size: clamp(28px,5vw,38px) }
+.player-controls{ gap: clamp(8px,1.6vw,12px) }
+.ctrl{ width:44px; height:44px; min-width:44px }
+#volume{ flex:1 1 120px; min-width:100px }
+
+/* Counter big number — keep inside viewport */
+.big-num{ font-size: clamp(80px, 22vw, 260px); -webkit-text-stroke-width: clamp(2px,.4vw,4px); word-break:keep-all }
+
+/* Scratch — responsive canvas */
+.scratch-wrap{ width:min(600px, 100%); aspect-ratio: 2/1 }
+.scratch-wrap .scratch-message{ font-size: clamp(20px,5vw,48px); padding: clamp(12px,3vw,24px) }
+#scratchCanvas{ width:100% !important; height:100% !important }
+
+/* Celebrate */
+.celebrate{ padding-inline: clamp(16px,4vw,40px) }
+.celebrate .mega{ font-size: clamp(54px,14vw,200px); -webkit-text-stroke-width: clamp(2px,.4vw,3px) }
+.mega-sub{ font-size: clamp(14px,2vw,22px) }
+
+/* Footer */
+.footer{ font-size: clamp(12px,1.6vw,14px); padding: clamp(14px,2.5vw,22px) clamp(16px,4vw,32px); text-align:center; justify-content:center }
+.top-btn{ min-height:44px }
+
+/* Loader card responsive */
+.loader-card{ width:min(420px, 92vw); padding: clamp(20px,4vw,40px) }
+
+/* Easter notif */
+.easter{ width: min(420px, 92vw); text-align:center; font-size: clamp(13px,1.8vw,15px) }
+
+/* Landscape phones: tighten hero so it's not over-tall */
+@media (max-height: 520px) and (orientation: landscape){
+  .hero{ min-height:auto; padding-block: 40px }
+  .celebrate{ min-height:auto; padding-block: 60px }
+}
+
+/* Promises */
+.promise{ font-size: clamp(14px,2vw,18px); padding: clamp(12px,2vw,18px) }
+
+/* Ultra-wide cap */
+@media (min-width: 1900px){
+  .hero-inner,.section-head,.polaroid-grid,.reasons-grid,.bubble-grid,.gift-grid,.meter-box,.quiz-box,.paper,.player,.counter-box,.timeline-list,.promise-list{ margin-inline:auto }
+}
