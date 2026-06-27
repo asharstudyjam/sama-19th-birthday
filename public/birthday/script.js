@@ -4,86 +4,89 @@
 (() => {
   'use strict';
 
+  const clamp=(mn,mx,v)=>Math.max(mn,Math.min(mx,v));
+  const cCount=n=>Math.max(10,Math.min(n,Math.floor(n*(window.innerWidth/1920))));
+
   /* ---------- DATA ---------- */
   const PHOTOS = [
-    {emoji:'🌅', cap:'First sunrise', color:'#FF4FA3'},
-    {emoji:'🍜', cap:'That noodle night', color:'#FFD93D'},
-    {emoji:'🎢', cap:'Theme park screams', color:'#42A5F5'},
-    {emoji:'☕', cap:'Lazy coffee Sundays', color:'#7DFF8A'},
-    {emoji:'🌧️', cap:'Caught in the rain', color:'#FF9F1C'},
-    {emoji:'🎬', cap:'Movie marathon', color:'#FF5757'},
-    {emoji:'🌊', cap:'Beach day', color:'#42A5F5'},
-    {emoji:'🍕', cap:'Pizza, obviously', color:'#FFD93D'},
+    {emoji:'🌅', cap:'Your sunrise smile', color:'#FF4FA3'},
+    {emoji:'🍜', cap:'Ramen dates', color:'#FFD93D'},
+    {emoji:'🌸', cap:'You in spring light', color:'#42A5F5'},
+    {emoji:'☕', cap:'Coffee & conversations', color:'#7DFF8A'},
+    {emoji:'🌧️', cap:'Rainy day cuddles', color:'#FF9F1C'},
+    {emoji:'🎬', cap:'Movie nights with you', color:'#FF5757'},
+    {emoji:'🌊', cap:'Ocean dreams', color:'#42A5F5'},
+    {emoji:'✨', cap:'You, just existing', color:'#FFD93D'},
   ];
 
   const REASONS = [
-    {icon:'😂', title:'Laugh', desc:'Your laugh is illegal in 4 states. It should be 50.'},
-    {icon:'🧠', title:'Smart', desc:'You explain things and suddenly the universe makes sense.'},
-    {icon:'💖', title:'Kind', desc:'You collect strays — people, plants, problems. All loved.'},
-    {icon:'🔥', title:'Driven', desc:'You wake up and choose chaos productivity. Iconic.'},
-    {icon:'🎨', title:'Creative', desc:'Your brain is a Pinterest board with WiFi.'},
-    {icon:'🍳', title:'Feeds Me', desc:'Five-star service even when it\'s just toast. Especially toast.'},
-    {icon:'🎤', title:'Sings', desc:'Off-key, full heart. We will not be taking questions.'},
-    {icon:'🌙', title:'Patient', desc:'You wait for me. Even when I\'m wrong (read: always).'},
-    {icon:'⭐', title:'Glow', desc:'Rooms get brighter. Physics has no notes.'},
-    {icon:'🫶', title:'Mine', desc:'And somehow, I\'m yours. Best deal of the century.'},
+    {icon:'😊', title:'Your Smile', desc:'It lights up rooms and makes my heart skip every single time.'},
+    {icon:'🧠', title:'Your Mind', desc:'You\'re sharp, curious, and the best conversationalist I know.'},
+    {icon:'💖', title:'Your Kindness', desc:'You care deeply about everyone around you. It\'s beautiful.'},
+    {icon:'🎨', title:'Your Creativity', desc:'The way you see the world is art. I love watching you create.'},
+    {icon:'😂', title:'Your Laugh', desc:'My favorite sound in the world. I\'d do anything to hear it.'},
+    {icon:'🌙', title:'Your Patience', desc:'You put up with me, and that alone deserves a medal.'},
+    {icon:'🔥', title:'Your Passion', desc:'When you care about something, you give it your everything. Inspiring.'},
+    {icon:'🍳', title:'Your Cooking', desc:'Even burnt toast tastes better when you make it.'},
+    {icon:'⭐', title:'Your Glow', desc:'There\'s something about you that draws people in. Magic.'},
+    {icon:'🫶', title:'Just You', desc:'Every little thing about you. No notes. Perfect as you are.'},
   ];
 
   const TIMELINE = [
-    {date:'Day 1', title:'First "hi"', text:'I typed it 4 times before sending. Worth it.', emoji:'👋'},
-    {date:'Month 1', title:'The Long Call', text:'We talked till the sun yelled at us to log off.', emoji:'📞'},
-    {date:'Month 3', title:'First Date', text:'I overdressed. You said cute. I accepted the win.', emoji:'🌹'},
-    {date:'Month 6', title:'The Trip', text:'We got lost. Best wrong turn of my life.', emoji:'🗺️'},
-    {date:'Year 1', title:'The Argument & The Hug', text:'We figured out we\'re a team. We won.', emoji:'🤝'},
-    {date:'Today', title:'Your Birthday', text:'This whole website. For you. Happy birthday, love.', emoji:'🎂'},
+    {date:'Day 1', title:'The First Hello', text:'The day I first saw you. I didn\'t know it then, but my whole world was about to change.', emoji:'👋'},
+    {date:'Month 1', title:'Falling Fast', text:'Every conversation made me realize I was falling for you. Hard.', emoji:'💫'},
+    {date:'Month 3', title:'Three Months In', text:'Three months of smiles, late nights, and knowing you were someone special.', emoji:'🌹'},
+    {date:'Month 6', title:'Half a Year', text:'Six months of memories I\'ll cherish forever. You make everything better.', emoji:'🥰'},
+    {date:'Year 1', title:'One Year Stronger', text:'A whole year of us. Every high, every low — I\'d do it all again.', emoji:'💍'},
+    {date:'Today', title:'Sama Turns 19!', text:'Nineteen years of you in this world. Thank you for being born. I love you.', emoji:'🎂'},
   ];
 
   const BUBBLES = [
-    "You're the best part of every ordinary day.",
-    "Texting you is my favorite hobby. Don't tell GTA.",
-    "If overthinking burned calories, I'd be ripped from missing you.",
-    "Your hand fits mine like the universe planned ahead.",
-    "I'd pick you. In every universe. Even the one where we're frogs.",
-    "Marry me again on a Tuesday for fun.",
-    "You make Mondays bearable. That's wizardry.",
-    "I love you in past tense, present tense, and tense.",
-    "Stay. Always. Even when the WiFi is bad.",
+    "Sama, you're the best part of every single day.",
+    "I fall in love with you a little more every morning.",
+    "You're my favorite notification.",
+    "Your name is my favorite word.",
+    "Being with you feels like coming home.",
+    "I'd choose you in every timeline, every universe.",
+    "You make ordinary moments feel magical.",
+    "I love you in ways words can't reach.",
+    "You're the best thing that's ever happened to me.",
   ];
 
   const GIFTS = [
-    {emoji:'🎁', title:'A Promise', text:'A weekend, your plan, my wallet. Pick the date.'},
-    {emoji:'💌', title:'A Letter', text:'Scroll down — the long one. Tissues advised.'},
-    {emoji:'🌟', title:'A Wish', text:'Make one. I\'ll spend the year quietly making it happen.'},
+    {emoji:'🎁', title:'A Promise', text:'A weekend getaway — your choice of place, my treat. Let\'s make memories.'},
+    {emoji:'💌', title:'A Letter', text:'Scroll down — I wrote you something. Tissues advised, Sama.'},
+    {emoji:'🌟', title:'A Wish', text:'Make a wish. I\'ll spend the next year quietly making it come true.'},
   ];
 
   const PROMISES = [
-    "make you laugh, even when you don't want to.",
-    "remember how you take your coffee.",
-    "fight for us — never with us.",
-    "say sorry first when I'm wrong.",
-    "say sorry first when you're wrong (jk).",
-    "celebrate your wins louder than you do.",
-    "hold your hand in scary doctor waiting rooms.",
-    "send dumb memes at strategic moments.",
-    "grow with you, not away from you.",
-    "love you on the boring days the most.",
+    "make you laugh when you least expect it.",
+    "listen — truly listen — when you speak.",
+    "choose you, every single day.",
+    "say sorry when I mess up, and mean it.",
+    "celebrate you like the queen you are.",
+    "hold your hand through the hard days.",
+    "send you things that remind me of you (everything does).",
+    "grow alongside you, not apart from you.",
+    "love you on the boring Tuesdays and the wild Saturdays.",
+    "always, always show up for you, Sama.",
   ];
 
-  const LETTER = `Today the internet, the calendar, and I all agree on one thing: you should be celebrated, loudly. So here it is — a tiny corner of the web, built clumsily, with love in every line of code.\n\nThank you for being patient with my chaos. Thank you for laughing at the jokes I recycle. Thank you for being the steady, kind, ridiculous, brilliant person you are.\n\nI hope this year hands you everything you've quietly hoped for. And I hope I'm there for most of it — coffee in hand, song playing, dog hair on my hoodie.\n\nHappy birthday, my favorite human. The world got a lot less interesting before you, and a lot more fun after.`;
+  const LETTER = `Dear Sama,\n\nHappy 19th birthday, my love. Nineteen years ago, on July 8, 2006, the world became a little brighter — even if it didn't know it yet.\n\nI don't have the right words to tell you what you mean to me. But I know that since you came into my life, everything has felt a little more colorful, a little more meaningful, and a lot more fun.\n\nYou're the first person I want to talk to in the morning and the last person I want to hear before I sleep. You're my favorite thought, my biggest smile, my softest landing.\n\nThank you for being exactly who you are — kind, brilliant, stunning, and beautifully chaotic in all the right ways. Thank you for letting me be part of your world.\n\nI hope 19 is your best year yet. I hope it hands you everything you've quietly wished for. And I hope I'm right there beside you for all of it — holding your hand, making you laugh, and loving you every step of the way.\n\nHappy birthday, Sama. You are so, so loved.\n\n— Syed Ashar 💖`;
 
   const QUIZ = [
-    {q:"What is my favorite thing about you?", a:["Your laugh","Your eyes","Your kindness","All of the above"], correct:3},
-    {q:"What snack belongs to us?", a:["Popcorn","That weird chocolate","Fries dipped in milkshake","All edible items"], correct:3},
-    {q:"Where would I drop everything to go with you right now?", a:["The moon","The corner shop","Anywhere","Tokyo"], correct:2},
-    {q:"How long do I plan to love you?", a:["A while","Definitely Thursday","Forever-ish","Yes"], correct:2},
-    {q:"What is the best song?", a:["Ours","The one we made up","The one you hum","All of the above"], correct:3},
+    {q:"What is Sama's favorite color?", a:["Pink","Blue","Black","Purple"], correct:0},
+    {q:"What's her go-to comfort food?", a:["Pasta","Ice cream","Ramen","Chocolate"], correct:2},
+    {q:"What animal reminds me of Sama?", a:["A cat","A bunny","A puppy","A fox"], correct:1},
+    {q:"If Sama could travel anywhere, she'd go to?", a:["Paris","Tokyo","Bali","New York"], correct:0},
+    {q:"What's the name of the guy who made this for you?", a:["Ali","Syed Ashar","Ahmed","Someone random"], correct:1},
   ];
 
   const $ = (s, r=document) => r.querySelector(s);
   const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
 
   /* ---------- LOADER ---------- */
-  const loaderTexts = ["Polishing the confetti…","Tuning the violins…","Inflating balloons…","Counting reasons…","Wrapping gifts…","Sealing the letter…"];
+  const loaderTexts = ["Wrapping Sama's gifts…","Polishing every pixel…","Counting 19 reasons…","Writing love notes…","Inflating balloons…","Making it perfect for you…"];
   const loader = $('#loader'), loaderBar = $('#loaderBar'), loaderPct = $('#loaderPercent'), loaderText = $('#loaderText');
   let p = 0;
   const lt = setInterval(()=>{ loaderText.textContent = loaderTexts[Math.floor(Math.random()*loaderTexts.length)]; }, 500);
@@ -177,7 +180,7 @@
       el.addEventListener('click',()=>{
         if (el.classList.contains('open')) return;
         el.classList.add('open');
-        confetti({particleCount:80, spread:70, origin:{y:.7}});
+        confetti({particleCount:cCount(80), spread:70, origin:{y:.7}});
       });
       gg.appendChild(el);
     });
@@ -196,11 +199,10 @@
     // Letter
     $('#letterBody').textContent = LETTER;
 
-    // Year + days
+    // Year + days since Sama was born (July 8, 2006)
     $('#year').textContent = new Date().getFullYear();
-    // pick a fake "since" date 400 days ago
-    const start = new Date(); start.setDate(start.getDate()-487);
-    const days = Math.floor((Date.now()-start)/86400000);
+    const samaBirth = new Date(2006, 6, 8);
+    const days = Math.floor((Date.now()-samaBirth)/86400000);
     $('#daysLoved').textContent = days.toLocaleString();
   }
 
@@ -228,14 +230,14 @@
     initPromises();
 
     // Hero entrance
-    if (window.gsap){
+    if (window.gsap && !matchMedia('(prefers-reduced-motion: reduce)').matches){
       gsap.from('.hero-title .line', {y:80, opacity:0, duration:.8, stagger:.12, ease:'back.out(1.6)'});
       gsap.from('.hero-kicker, .hero-sub, .hero-cta, .meta-card', {y:30, opacity:0, duration:.6, stagger:.08, delay:.6});
       gsap.to('.doodle', {y:'+=12', repeat:-1, yoyo:true, duration:2, ease:'sine.inOut', stagger:.2});
     }
 
     // small celebratory burst
-    setTimeout(()=>confetti({particleCount:60, spread:60, origin:{y:.2}}), 400);
+    setTimeout(()=>confetti({particleCount:cCount(60), spread:60, origin:{y:.2}}), 400);
   }
 
   /* ---------- CURSOR ---------- */
@@ -254,12 +256,14 @@
 
   /* ---------- FLOATERS ---------- */
   function initFloaters(){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const f=$('#floaters'); const icons=['❤','♥','★','✦','💖','✿'];
-    for(let i=0;i<14;i++){
+    const count=Math.min(14,Math.max(6,Math.floor(window.innerWidth/60)));
+    for(let i=0;i<count;i++){
       const s=document.createElement('span');
       s.textContent=icons[i%icons.length];
       s.style.left=Math.random()*100+'%';
-      s.style.fontSize=(16+Math.random()*24)+'px';
+      s.style.fontSize=clamp(14,20,window.innerWidth/30)+'px';
       s.style.color=['#FF4FA3','#FFD93D','#42A5F5','#7DFF8A','#FF5757'][i%5];
       s.style.animationDuration=(10+Math.random()*14)+'s';
       s.style.animationDelay=(-Math.random()*20)+'s';
@@ -287,10 +291,11 @@
     if(!window.Typed) return;
     new Typed('#typed', {
       strings:[
-        "My favorite person ❤",
-        "The reason my Spotify Wrapped is weird ♥",
-        "My partner in everything ✦",
-        "Happy birthday, you ⭐",
+        "Sama — my favorite person ❤",
+        "The girl who makes life feel like a movie ♥",
+        "Nineteen years of amazing ⭐",
+        "Happy birthday, my love ✦",
+        "You're everything, Sama 💖",
       ],
       typeSpeed:55, backSpeed:30, backDelay:1600, loop:true
     });
@@ -340,7 +345,7 @@
       fill.style.width='100%';
       let n=0; const iv=setInterval(()=>{
         n+=Math.ceil(Math.random()*9);
-        if (n>=999){ n=999; clearInterval(iv); pct.textContent='∞%'; confetti({particleCount:160, spread:100, origin:{y:.6}}); heartBurst(); }
+        if (n>=999){ n=999; clearInterval(iv); pct.textContent='∞%'; confetti({particleCount:cCount(160), spread:100, origin:{y:.6}}); heartBurst(); }
         else pct.textContent=n+'%';
       }, 30);
     };
@@ -396,41 +401,49 @@
   /* ---------- SCRATCH ---------- */
   function initScratch(){
     const c=$('#scratchCanvas'); if(!c) return;
-    const ctx=c.getContext('2d');
-    const draw=()=>{
-      ctx.fillStyle='#FFD93D'; ctx.fillRect(0,0,c.width,c.height);
-      ctx.fillStyle='#111'; ctx.font='bold 28px Bebas Neue, sans-serif'; ctx.textAlign='center';
-      ctx.fillText('SCRATCH ME ★', c.width/2, c.height/2);
-      ctx.font='14px Space Grotesk, sans-serif';
-      ctx.fillText('(use your finger / mouse)', c.width/2, c.height/2 + 28);
-    };
-    draw();
-    ctx.globalCompositeOperation='destination-out';
-    let drawing=false;
+    const wrap=c.parentElement;
+    let ctx=null, w=0, h=0, dpr=1, drawing=false, cleared=false;
+    const radius=()=>matchMedia('(hover:none)').matches?Math.max(24,w/12):Math.max(16,w/20);
+    function resize(){
+      const rect=wrap.getBoundingClientRect();
+      dpr=window.devicePixelRatio||1;
+      w=Math.round(rect.width); h=Math.round(rect.height);
+      c.width=w*dpr; c.height=h*dpr;
+      c.style.width=w+'px'; c.style.height=h+'px';
+      ctx=c.getContext('2d');
+      ctx.scale(dpr,dpr);
+      ctx.fillStyle='#FFD93D'; ctx.fillRect(0,0,w,h);
+      ctx.fillStyle='#111'; ctx.font='bold '+Math.max(18,Math.min(28,w/20))+'px Bebas Neue, sans-serif'; ctx.textAlign='center';
+      ctx.fillText('SCRATCH ME ★', w/2, h/2);
+      ctx.font=Math.max(11,Math.min(14,w/40))+'px Space Grotesk, sans-serif';
+      ctx.fillText('(use your finger / mouse)', w/2, h/2+Math.max(20,Math.min(40,h/6)));
+      ctx.globalCompositeOperation='destination-out';
+    }
+    resize();
     const pos=e=>{
       const r=c.getBoundingClientRect();
       const t=e.touches?e.touches[0]:e;
-      return {x:(t.clientX-r.left)*(c.width/r.width), y:(t.clientY-r.top)*(c.height/r.height)};
+      return {x:(t.clientX-r.left), y:(t.clientY-r.top)};
     };
     const start=e=>{drawing=true; move(e);};
     const end=()=>{drawing=false; checkClear();};
     const move=e=>{
       if(!drawing) return;
       e.preventDefault();
-      const {x,y}=pos(e);
-      ctx.beginPath(); ctx.arc(x,y,30,0,Math.PI*2); ctx.fill();
+      const p=pos(e);
+      ctx.beginPath(); ctx.arc(p.x,p.y,radius(),0,Math.PI*2); ctx.fill();
     };
     c.addEventListener('mousedown',start); c.addEventListener('mousemove',move); window.addEventListener('mouseup',end);
     c.addEventListener('touchstart',start,{passive:false}); c.addEventListener('touchmove',move,{passive:false}); c.addEventListener('touchend',end);
-    let cleared=false;
+    if(window.ResizeObserver) new ResizeObserver(()=>{const p=cleared; resize(); if(p)cleared=true;}).observe(wrap);
     function checkClear(){
       if(cleared) return;
       const d=ctx.getImageData(0,0,c.width,c.height).data;
       let clear=0; for(let i=3;i<d.length;i+=400) if(d[i]===0) clear++;
-      if (clear/(d.length/400) > .55){
+      if(clear/(d.length/400)>.55){
         cleared=true;
         c.style.transition='opacity .6s'; c.style.opacity=0;
-        confetti({particleCount:120, spread:80, origin:{y:.6}});
+        confetti({particleCount:cCount(120), spread:80, origin:{y:.6}});
       }
     }
   }
@@ -442,7 +455,7 @@
       if (i>=QUIZ.length){
         box.innerHTML=`<div class="q-result">You got ${score}/${QUIZ.length}.<br/>Verdict: ridiculously in love.<br/><button class="btn btn-pink" id="qAgain">Play again</button></div>`;
         $('#qAgain').addEventListener('click',()=>{i=0;score=0;render();});
-        confetti({particleCount:140, spread:90, origin:{y:.6}});
+        confetti({particleCount:cCount(140), spread:90, origin:{y:.6}});
         return;
       }
       const q=QUIZ[i];
@@ -504,7 +517,7 @@
     });
     function trigger(){
       const e=$('#easter'); e.classList.add('show');
-      confetti({particleCount:200, spread:120, origin:{y:.5}});
+      confetti({particleCount:cCount(200), spread:120, origin:{y:.5}});
       setTimeout(()=>e.classList.remove('show'), 4000);
     }
   }
@@ -516,14 +529,17 @@
     });
   }
 
-  // Mouse parallax for hero doodles
-  window.addEventListener('mousemove', (e)=>{
-    if (!window.gsap) return;
-    const x=(e.clientX/window.innerWidth - .5);
-    const y=(e.clientY/window.innerHeight - .5);
-    $$('.doodle').forEach((d,i)=>{
-      gsap.to(d,{x:x*(20+i*4), y:y*(20+i*4), duration:.6, ease:'power2.out'});
+  // Mouse parallax for hero doodles (skip if reduced motion)
+  const prefersReduced=matchMedia('(prefers-reduced-motion: reduce)');
+  if(!prefersReduced.matches){
+    window.addEventListener('mousemove', (e)=>{
+      if (!window.gsap) return;
+      const x=(e.clientX/window.innerWidth - .5);
+      const y=(e.clientY/window.innerHeight - .5);
+      $$('.doodle').forEach((d,i)=>{
+        gsap.to(d,{x:x*(20+i*4), y:y*(20+i*4), duration:.6, ease:'power2.out'});
+      });
     });
-  });
+  }
 
 })();

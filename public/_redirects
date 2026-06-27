@@ -1,0 +1,5 @@
+# Redirect root to birthday site
+/  /birthday/index.html  301
+
+# SPA fallback (not needed, but keep as safety)
+# *  /birthday/index.html  404
