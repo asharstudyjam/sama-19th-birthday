@@ -1,185 +1,323 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-<meta name="description" content="Happy 19th Birthday, Sama! A celebration of friendship." />
-<meta name="theme-color" content="#FFF5F7" />
-<meta name="color-scheme" content="light" />
+<meta name="description" content="A birthday wish for Sama — 19 reasons, memories, and friendship." />
+<meta name="theme-color" content="#FFF8E5" />
+<meta name="color-scheme" content="light dark" />
+<meta name="keywords" content="happy birthday, sama, 19th birthday, birthday, friendship, celebration" />
 <meta name="author" content="Syed Ashar" />
 <link rel="canonical" href="https://your-domain.pages.dev/birthday/index.html" />
+
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Happy 19th Birthday, Sama!" />
-<meta property="og:description" content="A birthday celebration for an amazing friend." />
+<meta property="og:title" content="Happy 19th Birthday Sama 🎉" />
+<meta property="og:description" content="A birthday wish made for a friend — 10 reasons, memories, gifts, and a letter." />
+<meta property="og:image" content="https://your-domain.pages.dev/og-image.png" />
 <meta property="og:url" content="https://your-domain.pages.dev/birthday/" />
+<meta property="og:site_name" content="Sama's 19th Birthday" />
+
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Happy 19th Birthday, Sama!" />
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎉</text></svg>" />
-<title>Happy 19th Birthday, Sama! 🎉</title>
+<meta name="twitter:title" content="Happy 19th Birthday Sama 🎉" />
+<meta name="twitter:description" content="A birthday wish for a wonderful friend." />
+<meta name="twitter:image" content="https://your-domain.pages.dev/og-image.png" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>" />
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>" />
+
+<title>Happy 19th Birthday Sama 🎉</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<!-- Scroll progress -->
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="#hero" class="nav-logo">Sama <span>· 19</span></a>
-    <div class="nav-links">
-      <a href="#message">Message</a>
-      <a href="#memory">Memory</a>
-      <a href="#music">Music</a>
-      <a href="#celebrate">Celebrate</a>
-    </div>
-    <button class="menu-btn" id="menuBtn" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+<!-- Loading Screen -->
+<div class="loader" id="loader" role="status" aria-label="Loading">
+  <div class="loader-card">
+    <div class="loader-cake">🎂</div>
+    <h2 class="loader-title">Loading Sama's Surprise…</h2>
+    <p class="loader-text" id="loaderText">Polishing the confetti…</p>
+    <div class="loader-bar"><div class="loader-bar-inner" id="loaderBar"></div></div>
+    <div class="loader-percent" id="loaderPercent">0%</div>
   </div>
-</nav>
+</div>
+
+<!-- Floating decorative hearts -->
+<div class="floaters" id="floaters" aria-hidden="true"></div>
+
+<!-- NAVIGATION -->
+<header class="nav" id="nav">
+  <a href="#hero" class="nav-logo">SAMA<span>•</span>19</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#photos">Photos</a>
+    <a href="#reasons">Reasons</a>
+    <a href="#timeline">Memories</a>
+    <a href="#gifts">Gifts</a>
+    <a href="#letter">Letter</a>
+    <a href="#celebrate">Party</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+  </div>
+</header>
 
 <main>
 
+<!-- 1. HERO -->
 <section class="hero" id="hero">
-  <div class="hero-bg">
-    <div class="hero-image-wrapper">
-      <img src="assets/images/hero.jpg" alt="Sama" class="hero-image" />
-      <div class="hero-overlay"></div>
-    </div>
+  <div class="hero-bg" aria-hidden="true">
+    <img src="assets/images/hero.jpg" alt="" class="hero-image" aria-hidden="true" />
+    <div class="hero-overlay"></div>
+    <span class="doodle d1">★</span>
+    <span class="doodle d3">✦</span>
+    <span class="doodle d4">✿</span>
+    <span class="doodle d5">✺</span>
+    <span class="doodle d7">✸</span>
   </div>
-  <div class="hero-content">
-    <p class="hero-kicker" data-aos="fade-down" data-aos-duration="800">Celebrating You</p>
-    <h1 class="hero-title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-      Happy 19th<br />
-      <span class="hero-name">Birthday, Sama!</span>
+  <div class="hero-inner">
+    <p class="hero-kicker">★ FOR SAMA — 19 NEVER LOOKED THIS GOOD ★</p>
+    <h1 class="hero-title">
+      <span class="line line-pink">HAPPY</span>
+      <span class="line line-yellow">BIRTHDAY</span>
     </h1>
-    <p class="hero-sub" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
-      Another year around the sun, and the world is brighter because you're in it.
-    </p>
-    <div class="hero-actions" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">
-      <a href="#celebrate" class="btn btn-primary">Celebrate 🎉</a>
-      <a href="#message" class="btn btn-outline">Read Message</a>
+    <p class="hero-sub"><span id="typed"></span></p>
+    <div class="hero-cta">
+      <a href="#photos" class="btn btn-pink">Sama, Let's Go →</a>
+      <a href="#celebrate" class="btn btn-yellow">Skip to Party 🎉</a>
     </div>
-  </div>
-  <div class="scroll-hint" aria-hidden="true">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
-</section>
-
-<section class="section message" id="message">
-  <div class="container">
-    <div class="section-label" data-aos="fade-up">A Note for You</div>
-    <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Dear Sama,</h2>
-    <div class="message-card glass" data-aos="fade-up" data-aos-delay="200">
-      <p id="messageBody">Nineteen looks beautiful on you. I hope this year brings you everything you've been dreaming of — new adventures, quiet joys, and moments that take your breath away. Thank you for being the wonderful person you are. The world is better with you in it. Happy birthday, Sama. 🎉</p>
+    <div class="hero-meta">
+      <div class="meta-card"><strong id="daysLoved">0</strong><span>days of Sama</span></div>
+      <div class="meta-card"><strong>19</strong><span>years of you</span></div>
+      <div class="meta-card"><strong>∞</strong><span>friend, always</span></div>
     </div>
   </div>
 </section>
 
-<section class="section memory" id="memory">
-  <div class="container">
-    <div class="section-label" data-aos="fade-up">A Memory</div>
-    <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Captured <span class="text-gradient">Moments</span></h2>
-    <p class="section-sub" data-aos="fade-up" data-aos-delay="150">Some memories stay with you forever.</p>
-    <div class="memory-card glass" data-aos="fade-up" data-aos-delay="200">
-      <div class="memory-image">
-        <img src="assets/images/hero.jpg" alt="Sama" loading="lazy" />
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>HAPPY BIRTHDAY ✦ SAMA ✦ 19 & FABULOUS ✦ ONE OF ONE ✦ </span>
+    <span>HAPPY BIRTHDAY ✦ SAMA ✦ 19 & FABULOUS ✦ ONE OF ONE ✦ </span>
+  </div>
+</div>
+
+<!-- 2. PHOTO WALL -->
+<section class="section photos" id="photos">
+  <header class="section-head">
+    <span class="tag">01 / PHOTO WALL</span>
+    <h2 class="section-title" data-split>Snapshots <em>of you</em>.</h2>
+    <p class="section-sub">A messy, beautiful little gallery. Tape included.</p>
+  </header>
+  <div class="polaroid-grid" id="polaroidGrid"></div>
+</section>
+
+<!-- 3. REASONS -->
+<section class="section reasons" id="reasons">
+  <header class="section-head">
+    <span class="tag">02 / TEN TRUTHS</span>
+    <h2 class="section-title" data-split>10 reasons <em>Sama's amazing</em>.</h2>
+    <p class="section-sub">Flip the cards. Try to disagree.</p>
+  </header>
+  <div class="reasons-grid" id="reasonsGrid"></div>
+</section>
+
+<!-- 4. MEMORY TIMELINE -->
+<section class="section timeline" id="timeline">
+  <header class="section-head">
+    <span class="tag">03 / OUR HIGHLIGHT REEL</span>
+    <h2 class="section-title" data-split>Memory <em>timeline</em>.</h2>
+    <p class="section-sub">The director's cut.</p>
+  </header>
+  <ol class="timeline-list" id="timelineList"></ol>
+</section>
+
+<!-- 5. LOVE METER -->
+<section class="section meter" id="meter">
+  <header class="section-head">
+    <span class="tag">04 / SCIENTIFIC FINDINGS</span>
+    <h2 class="section-title" data-split>Friendship-o-meter <em>™</em></h2>
+    <p class="section-sub">Calibrated daily. Spoiler: it broke.</p>
+  </header>
+  <div class="meter-box">
+    <div class="meter-bar"><div class="meter-fill" id="meterFill"></div></div>
+    <div class="meter-readout">
+      <span id="meterPercent">0%</span>
+      <button class="btn btn-pink" id="meterBtn">Run diagnostic 💓</button>
+    </div>
+    <p class="meter-note">Disclaimer: meter exploded at infinity. No takebacks.</p>
+  </div>
+</section>
+
+<!-- 6. CUTE MESSAGES -->
+<section class="section bubbles" id="bubbles">
+  <header class="section-head">
+    <span class="tag">05 / FOR SAMA</span>
+    <h2 class="section-title" data-split>Little things <em>I'd say</em>.</h2>
+  </header>
+  <div class="bubble-grid" id="bubbleGrid"></div>
+</section>
+
+<!-- 7. GIFT BOXES -->
+<section class="section gifts" id="gifts">
+  <header class="section-head">
+    <span class="tag">06 / FOR SAMA</span>
+    <h2 class="section-title" data-split>Three tiny <em>gifts</em>.</h2>
+    <p class="section-sub">Tap a box. Mind the confetti!</p>
+  </header>
+  <div class="gift-grid" id="giftGrid"></div>
+</section>
+
+<!-- 8. PROMISES -->
+<section class="section promises" id="promises">
+  <header class="section-head">
+    <span class="tag">07 / PROMISES TO SAMA</span>
+    <h2 class="section-title" data-split>I'll always<em>…</em></h2>
+  </header>
+  <ul class="promise-list" id="promiseList"></ul>
+</section>
+
+<!-- 9. LETTER -->
+<section class="section letter" id="letter">
+  <header class="section-head">
+    <span class="tag">08 / DEAR SAMA</span>
+    <h2 class="section-title" data-split>For your eyes <em>only</em>.</h2>
+  </header>
+  <article class="paper">
+    <div class="paper-tape"></div>
+    <h3>Dear Sama,</h3>
+    <p id="letterBody"></p>
+    <p class="signoff">Your friend, always, <br/><strong>— Syed Ashar</strong></p>
+  </article>
+</section>
+
+<!-- 10. COUNTER -->
+<section class="section counter" id="counter">
+  <header class="section-head">
+    <span class="tag">09 / SAMA TALLY</span>
+    <h2 class="section-title" data-split>Reasons <em>Sama</em> is awesome</h2>
+  </header>
+  <div class="counter-box">
+    <div class="big-num" id="bigNum">0</div>
+    <div class="counter-label">and still climbing, honestly.</div>
+  </div>
+</section>
+
+<!-- 11. MUSIC PLAYER -->
+<section class="section music" id="music">
+  <header class="section-head">
+    <span class="tag">10 / SAMA'S SONG</span>
+    <h2 class="section-title" data-split>Press play, <em>for Sama</em>.</h2>
+  </header>
+  <div class="player">
+    <div class="player-art">
+      <div class="vinyl" id="vinyl">♪</div>
+    </div>
+    <div class="player-meta">
+      <div class="track-title">Sama's 19th Theme</div>
+      <div class="track-artist">by Syed Ashar</div>
+      <div class="player-bar"><div class="player-bar-fill" id="playerBarFill"></div></div>
+      <div class="player-controls">
+        <button class="ctrl" id="playBtn" aria-label="Play">▶</button>
+        <input type="range" id="volume" min="0" max="100" value="60" aria-label="Volume" />
+        <div class="viz" id="viz" aria-hidden="true"></div>
       </div>
-      <div class="memory-content">
-        <div class="memory-label">A Special Moment</div>
-        <p id="memoryText" class="memory-text">Here's to the memories we've made and the ones still waiting to happen. You make every moment special just by being you.</p>
-        <p class="memory-edit-hint">✎ You can edit this text in the code.</p>
-      </div>
+      <p class="player-note">Add your song as <code>assets/music/song.mp3</code>.</p>
     </div>
   </div>
 </section>
 
-<section class="section cake-section" id="cake">
-  <div class="container">
-    <div class="section-label" data-aos="fade-up">Make a Wish</div>
-    <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Blow the <span class="text-gradient">Candles</span></h2>
-    <div class="cake-scene" data-aos="zoom-in" data-aos-delay="200">
-      <div class="cake">
-        <div class="cake-plate"></div>
-        <div class="cake-body">
-          <div class="cake-layer cake-layer-1"></div>
-          <div class="cake-frosting"></div>
-          <div class="cake-layer cake-layer-2"></div>
-          <div class="candle" id="candle">
-            <div class="candle-body"></div>
-            <div class="candle-wick"></div>
-            <div class="candle-flame" id="candleFlame"></div>
-          </div>
-          <div class="candle candle-2">
-            <div class="candle-body"></div>
-            <div class="candle-wick"></div>
-            <div class="candle-flame"></div>
-          </div>
-          <div class="candle candle-3">
-            <div class="candle-body"></div>
-            <div class="candle-wick"></div>
-            <div class="candle-flame"></div>
-          </div>
-        </div>
-      </div>
-      <button class="btn btn-primary" id="blowBtn">Blow the Candles 🕯️</button>
+<!-- COUNTDOWN -->
+<section class="section countdown" id="countdown">
+  <header class="section-head">
+    <span class="tag">+1 / COUNTDOWN</span>
+    <h2 class="section-title" data-split>Countdown to <em>19</em>.</h2>
+    <p class="section-sub">7 August — the world gets brighter.</p>
+  </header>
+  <div class="countdown-box">
+    <div class="countdown-grid">
+      <div class="countdown-unit"><strong id="cdDays">0</strong><span>days</span></div>
+      <div class="countdown-unit"><strong id="cdHours">0</strong><span>hours</span></div>
+      <div class="countdown-unit"><strong id="cdMins">0</strong><span>minutes</span></div>
+      <div class="countdown-unit"><strong id="cdSecs">0</strong><span>seconds</span></div>
     </div>
+    <p class="countdown-label">Until Sama turns 19 on 7 August 2026</p>
   </div>
 </section>
 
-<section class="section music-section" id="music">
-  <div class="container">
-    <div class="section-label" data-aos="fade-up">Soundtrack</div>
-    <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">A little <span class="text-gradient">melody</span></h2>
-    <p class="section-sub" data-aos="fade-up" data-aos-delay="150">Press play for some birthday vibes.</p>
-    <div class="music-card glass" data-aos="fade-up" data-aos-delay="200">
-      <div class="music-visual" id="musicVisual">
-        <div class="music-bar" style="--i:1"></div>
-        <div class="music-bar" style="--i:2"></div>
-        <div class="music-bar" style="--i:3"></div>
-        <div class="music-bar" style="--i:4"></div>
-        <div class="music-bar" style="--i:5"></div>
-      </div>
-      <p class="music-label" id="musicLabel">Tap play for Sama</p>
-      <button class="btn btn-primary btn-circle" id="playBtn" aria-label="Play">▶</button>
-      <p class="music-note">Add your song as <code>assets/music/song.mp3</code></p>
-    </div>
+<!-- 12. SCRATCH CARD -->
+<section class="section scratch" id="scratch">
+  <header class="section-head">
+    <span class="tag">11 / SCRATCH ME</span>
+    <h2 class="section-title" data-split>A tiny <em>secret</em>.</h2>
+  </header>
+  <div class="scratch-wrap">
+    <div class="scratch-message">You're an amazing friend, Sama! 🌟</div>
+    <canvas id="scratchCanvas" aria-label="Scratch card"></canvas>
+    <p class="scratch-note">Drag across the gold panel.</p>
   </div>
 </section>
 
+<!-- 13. QUIZ -->
+<section class="section quiz" id="quiz">
+  <header class="section-head">
+    <span class="tag">12 / SAMA TRIVIA</span>
+    <h2 class="section-title" data-split>Mini <em>quiz</em>.</h2>
+    <p class="section-sub">How well do you know her? (Spoiler: I'm her friend.)</p>
+  </header>
+  <div class="quiz-box" id="quizBox"></div>
+</section>
+
+<!-- 14. FINAL CELEBRATION -->
 <section class="section celebrate" id="celebrate">
-  <div class="container">
-    <div class="section-label" data-aos="fade-up" data-aos-delay="100">Let's Celebrate</div>
-    <h2 class="section-title" data-aos="fade-up" data-aos-delay="200">Happy 19th <span class="text-gradient">Birthday, Sama!</span></h2>
-    <p class="section-sub" data-aos="fade-up" data-aos-delay="300">You deserve all the joy in the world.</p>
-    <div class="celebrate-action" data-aos="fade-up" data-aos-delay="400">
-      <button class="btn btn-primary btn-large" id="celebrateBtn">
-        🎉 Celebrate! 🎉
-      </button>
-    </div>
-  </div>
+  <div class="balloon b1">🎈</div>
+  <div class="balloon b2">🎈</div>
+  <div class="balloon b3">🎈</div>
+  <div class="balloon b4">🎈</div>
+  <h2 class="mega" data-split>HAPPY<br/>19TH SAMA!</h2>
+  <p class="mega-sub">You are a star, Sama! Keep shining!</p>
+  <button class="btn btn-pink huge" id="celebrateBtn">Celebrate Again 🎉</button>
 </section>
 
 </main>
 
 <footer class="footer">
-  <div class="container">
-    <p>Made with care, for a wonderful friend. — Syed Ashar</p>
-    <button id="topBtn" class="btn-top" aria-label="Back to top">↑</button>
-  </div>
+  <div>Made by Syed Ashar, for Sama — © <span id="year"></span></div>
+  <button id="topBtn" class="top-btn" aria-label="Back to top">↑ TOP</button>
 </footer>
 
-<div id="balloon-container" aria-hidden="true"></div>
-<div id="sparkle-container" aria-hidden="true"></div>
+<!-- Easter egg -->
+<div class="easter" id="easter" aria-hidden="true">
+  <div>↑↑↓↓←→←→BA — you found it. Extra joy unlocked. ✨</div>
+</div>
 
 <audio id="bgAudio" src="assets/music/song.mp3" preload="none"></audio>
 
+<!-- Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
 <script src="script.js"></script>
 </body>
 </html>
