@@ -1556,7 +1556,6 @@ em {
 /* ── Hide doodles on small screens ── */
 @media (max-width: 520px) {
   .doodle { display: none; }
-  .hero-bg { display: none; }
 }
 
 /* ── Hide cursor on touch / small screens ── */
