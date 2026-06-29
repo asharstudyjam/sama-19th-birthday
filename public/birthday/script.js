@@ -27,7 +27,7 @@
     {icon:'😂', title:'Your Laugh', desc:'My favorite sound in the world. I\'d do anything to hear it.'},
     {icon:'🌙', title:'Your Patience', desc:'You have the patience of a saint. Truly admirable.'},
     {icon:'🔥', title:'Your Passion', desc:'When you care about something, you give it your everything. Truly inspiring.'},
-    {icon:'🍳', title:'Your Cooking', desc:'You could make anything and it would taste amazing.'},
+    {icon:'✨', title:'Your Look', desc:'You have a style and presence that turns heads and starts conversations.'},
     {icon:'⭐', title:'Your Glow', desc:'There\'s something about you that draws people in. Magic.'},
     {icon:'🫶', title:'Just You', desc:'Every little thing about you makes you the awesome person you are.'},
   ];
