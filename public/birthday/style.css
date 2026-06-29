@@ -2035,3 +2035,59 @@ em {
 [data-theme="dark"] .blessing-translation {
   color: #bbb;
 }
+
+/* ── Hero Byline ── */
+
+
+/* ── Letter Signature ── */
+.signature {
+  margin-top: var(--space-lg);
+  font-family: 'Dancing Script', 'Georgia', cursive;
+  font-size: clamp(18px, 2.5vw, 24px);
+  color: var(--pink);
+  text-align: right;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  opacity: 0.85;
+  line-height: 1.4;
+}
+
+.signature em {
+  font-style: normal;
+  background: none;
+  border: none;
+  box-shadow: none;
+  display: inline;
+  transform: none;
+  padding: 0;
+  font-family: 'Dancing Script', 'Georgia', cursive;
+  color: var(--pink);
+  font-weight: 700;
+}
+
+/* ── Footer updates ── */
+.footer-main {
+  font-weight: 700;
+  font-size: clamp(12px, 1.6vw, 14px);
+  text-align: center;
+  width: 100%;
+}
+
+.footer-note {
+  font-size: clamp(10px, 1.2vw, 12px);
+  opacity: 0.6;
+  font-style: italic;
+  text-align: center;
+  width: 100%;
+  margin-top: 2px;
+  font-weight: 400;
+}
+
+/* ── Dark theme additions ── */
+[data-theme="dark"] .signature {
+  color: #ff80b5;
+}
+
+[data-theme="dark"] .signature em {
+  color: #ff80b5;
+}
