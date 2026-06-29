@@ -232,7 +232,6 @@ Happy birthday, Sama. The world is better with you in it.
     initCounter();
     initPlayer();
     initScratch();
-    initQuiz();
     initCelebrate();
     initTop();
     initEaster();
