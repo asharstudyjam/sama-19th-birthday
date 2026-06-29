@@ -8,17 +8,6 @@
   const cCount=n=>Math.max(10,Math.min(n,Math.floor(n*(window.innerWidth/1920))));
 
   /* ---------- DATA ---------- */
-  const PHOTOS = [
-    {emoji:'🌅', cap:'A bright smile', color:'#FF4FA3'},
-    {emoji:'🍜', cap:'Good food times', color:'#FFD93D'},
-    {emoji:'🌸', cap:'Spring vibes', color:'#42A5F5'},
-    {emoji:'☕', cap:'Coffee chats', color:'#7DFF8A'},
-    {emoji:'🌧️', cap:'Rainy day thoughts', color:'#FF9F1C'},
-    {emoji:'🎬', cap:'Movie nights', color:'#FF5757'},
-    {emoji:'🌊', cap:'Dream big', color:'#42A5F5'},
-    {emoji:'✨', cap:'Just being you', color:'#FFD93D'},
-  ];
-
   const REASONS = [
     {icon:'😊', title:'Your Smile', desc:'It lights up rooms and makes everyone around you feel better.'},
     {icon:'🧠', title:'Your Mind', desc:'You\'re sharp, curious, and the best conversationalist I know.'},
@@ -115,20 +104,6 @@ Happy birthday, Sama. The world is better with you in it.
 
   /* ---------- BUILD DOM ---------- */
   function buildAll(){
-    // Photos
-    const pg = $('#polaroidGrid');
-    PHOTOS.forEach((p,i)=>{
-      const el = document.createElement('div');
-      el.className = 'polaroid';
-      el.setAttribute('data-aos','zoom-in');
-      el.setAttribute('data-aos-delay', (i*60).toString());
-      el.innerHTML = `
-        <div class="polaroid-img" style="background:${p.color}">${p.emoji}</div>
-        <div class="polaroid-caption">${p.cap}</div>
-        ${i%3===0?'<div class="sticker">★ FAV</div>':''}`;
-      pg.appendChild(el);
-    });
-
     // Reasons
     const rg = $('#reasonsGrid');
     REASONS.forEach((r,i)=>{
@@ -231,7 +206,6 @@ Happy birthday, Sama. The world is better with you in it.
     initMeter();
     initCounter();
     initPlayer();
-    initScratch();
     initCelebrate();
     initTop();
     initEaster();

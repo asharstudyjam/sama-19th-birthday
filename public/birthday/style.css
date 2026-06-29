@@ -1279,12 +1279,58 @@ em {
   inset: 0;
   display: grid;
   place-items: center;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(20px, 5vw, 48px);
-  color: var(--pink);
   background: var(--white);
-  padding: var(--space-md);
+  padding: var(--space-lg);
   text-align: center;
+  animation: scratchReveal .8s ease-out both;
+}
+
+@keyframes scratchReveal {
+  from { opacity: 0; transform: scale(.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.scratch-inner {
+  max-width: 520px;
+  width: 100%;
+}
+
+.scratch-line1 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: clamp(15px, 2.2vw, 20px);
+  font-weight: 600;
+  color: var(--fg);
+  line-height: 1.5;
+  margin-bottom: var(--space-sm);
+}
+
+.scratch-line2 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: clamp(12px, 1.6vw, 15px);
+  font-weight: 400;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+}
+
+.scratch-birthday {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(22px, 4vw, 36px);
+  letter-spacing: 1px;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--pink), #f57f17, var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-xs);
+}
+
+.scratch-signature {
+  font-family: 'Dancing Script', 'Georgia', cursive;
+  font-size: clamp(16px, 2.5vw, 22px);
+  color: var(--pink);
+  font-weight: 400;
+  opacity: 0.85;
 }
 
 #scratchCanvas {
@@ -2036,9 +2082,6 @@ em {
   color: #bbb;
 }
 
-/* ── Hero Byline ── */
-
-
 /* ── Letter Signature ── */
 .signature {
   margin-top: var(--space-lg);
@@ -2084,6 +2127,22 @@ em {
 }
 
 /* ── Dark theme additions ── */
+[data-theme="dark"] .scratch-message {
+  background: #1c1c1c;
+}
+
+[data-theme="dark"] .scratch-line1 {
+  color: #fff;
+}
+
+[data-theme="dark"] .scratch-line2 {
+  color: #bbb;
+}
+
+[data-theme="dark"] .scratch-signature {
+  color: #ff80b5;
+}
+
 [data-theme="dark"] .signature {
   color: #ff80b5;
 }
